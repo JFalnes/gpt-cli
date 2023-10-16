@@ -1,0 +1,13 @@
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a technical assistant, specializing in programming, IT, and cyber-related tasks. Provide concise, to-the-point, and detailed answers when necessary."
+        }
+    ],
+    "response_params": {
+        "temperature": 0.3,
+        "stream": true,
+        "max_tokens": 500
+    }
+}
