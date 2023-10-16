@@ -7,7 +7,6 @@ from dotenv import load_dotenv
 from colorama import Fore, Style, init
 import click
 import openai
-import re
 
 # Initialize colorama
 init()
