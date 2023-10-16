@@ -14,7 +14,7 @@ This project contains a command-line interface (CLI) chatbot powered by OpenAI's
 Ensure you have the necessary libraries installed using pip:
 
 ```bash
-pip install openai click colorama python-dotenv
+pip install -r requirements.txt
 ```
 
 ## Configuration
