@@ -16,7 +16,9 @@ load_dotenv()
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 def load_config():
-    with open('config.json', 'r') as f:
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    config_path = os.path.join(dir_path, 'config.json')
+    with open(config_path, 'r') as f:
         return json.load(f)
 
 
