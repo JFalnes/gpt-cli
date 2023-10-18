@@ -45,12 +45,40 @@ OPENAI_API_KEY=your-api-key-here
 - The `response_params` object contains parameters for the `openai.ChatCompletion.create` method to control the behavior of the model.
 
 ## Usage
+## Initial Setup
+Create virtualenv and install requirements.
 
-Run the script using Python:
+Create a .env and populate it with your `OPENAI_API_KEY=`
+
+## Running the Script
+Using Python directly:
 
 ```bash
 python main.py
 ```
+or:
+
+Using a Global Shortcut (bash):
+To make the script globally accessible, create a symlink to it in /usr/local/bin. This allows you to use the chat command from any directory. Make sure to run this command as sudo to get the necessary permissions:
+
+```bash
+sudo ln -s /absolute/path/to/workspace/gpt-cli/scripts/run.sh /usr/local/bin/chat
+
+```
+
+Using Powershell:
+
+Edit `$projectPath` in `run.ps1` to match your environment.
+
+Add this line to your `$PROFILE`:
+
+```ps1
+Set-Alias -Name chat -Value "C:\your\directory\here\workspace\gpt-cli\scripts\run.ps1"
+```
+
+Run as sudo, `sudo chat`.
+
+Then use 'chat' to run from anywhere.
 
 You'll be greeted with a prompt (`>>>`). Here, you can type your message to the GPT-4 model. The model's response will be streamed back to you in real-time.
 
