@@ -1,16 +1,22 @@
 #!/bin/bash
 
-# Change to the parent directory
-cd "$(dirname "$0")/.."
+# Get the directory of the symlink
+LINK_DIR="/usr/local/bin"
 
-# Get the directory of the currently executing script (which is now the parent directory)
-DIR="$(pwd)"
+# Read the target of the symlink
+TARGET="$(readlink "$LINK_DIR/chat")"
+
+# Extract the directory of the target
+TARGET_DIR="$(dirname "$TARGET")"
+
+# Calculate the root directory of gpt-cli, which is one directory up from the scripts directory
+ROOT_DIR="$(dirname "$TARGET_DIR")"
 
 # Activate the virtual environment
-source "$DIR/.venv/bin/activate"
+source "$ROOT_DIR/.venv/bin/activate"
 
 # Run the Python script
-python3 "$DIR/src/main.py"
+python3 "$ROOT_DIR/src/main.py"
 
 # Deactivate the virtual environment
 deactivate
