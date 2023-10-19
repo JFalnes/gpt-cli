@@ -65,6 +65,7 @@ To make the script globally accessible, create a symlink to it in /usr/local/bin
 sudo ln -s /absolute/path/to/workspace/gpt-cli/scripts/run.sh /usr/local/bin/chat
 
 ```
+#### Important: Remember to `chmod +x run.sh` to make the script executable.
 
 Using Powershell:
 
