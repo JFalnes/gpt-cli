@@ -5,6 +5,7 @@ import time
 import json
 from dotenv import load_dotenv
 from colorama import Fore, Style, init
+import readline
 
 # Initialize colorama
 init()
@@ -32,7 +33,7 @@ def chat(model):
     config = load_config()
     messages = config['messages']
     while True:
-        user_message = click.prompt('', prompt_suffix=f'{Fore.BLUE}>>> {Fore.RESET}', type=str)
+        user_message = input(f'{Fore.BLUE}>>> {Fore.RESET}')
         messages.append({"role": "user", "content": user_message})
         
         # Record the time before the request is sent
