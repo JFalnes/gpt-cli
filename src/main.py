@@ -1,4 +1,3 @@
-import click
 import openai
 import os
 import time
@@ -6,6 +5,7 @@ import json
 from dotenv import load_dotenv
 from colorama import Fore, Style, init
 import readline
+import argparse
 
 # Initialize colorama
 init()
@@ -21,8 +21,6 @@ def load_config():
         return json.load(f)
 
 
-@click.command()
-@click.option("--model", default="gpt-4", help="The name of the GPT model to use.")
 def chat(model):
     """
     This function initializes a chatbot using the OpenAI API and allows the user to interact with it through the command line.
@@ -66,5 +64,13 @@ def chat(model):
         full_reply_content = ''.join([m.get('content', '') for m in collected_messages])
         messages.append({"role": "assistant", "content": full_reply_content})
 
+
+def parse_args():
+    parser = argparse.ArgumentParser(description="Chat with GPT!")
+    parser.add_argument("--model", default="gpt-4", help="Name of the model to use")
+    return parser.parse_args()
+
+
 if __name__ == "__main__":
-    chat()
+    args = parse_args()
+    chat(args.model)
