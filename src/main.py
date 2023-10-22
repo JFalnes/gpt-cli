@@ -31,12 +31,15 @@ def chat(model):
     config = load_config()
     messages = config['messages']
     while True:
-        user_message = input(f'{Fore.BLUE}>>> {Fore.RESET}')
-        messages.append({"role": "user", "content": user_message})
-        
+        try:
+            user_message = input(f'{Fore.BLUE}>>> {Fore.RESET}')
+            messages.append({"role": "user", "content": user_message})
+        except (KeyboardInterrupt, EOFError):
+            print(f'\n{Fore.RED}Exiting chat. Goodbye! {Fore.RESET}')
+            exit()
         # Record the time before the request is sent
         start_time = time.time()
-        
+
         # Send a ChatCompletion request with stream=True
         response_gen = openai.ChatCompletion.create(
                 model=model,
