@@ -67,6 +67,8 @@ sudo ln -s /absolute/path/to/workspace/gpt-cli/scripts/run.sh /usr/local/bin/cha
 ```
 #### Important: Remember to `chmod +x run.sh` to make the script executable.
 
+Run as sudo, `sudo chat`.
+
 Using Powershell:
 
 Edit `$projectPath` in `run.ps1` to match your environment.
@@ -77,7 +79,6 @@ Add this line to your `$PROFILE`:
 Set-Alias -Name chat -Value "C:\your\directory\here\workspace\gpt-cli\scripts\run.ps1"
 ```
 
-Run as sudo, `sudo chat`.
 
 Then use 'chat' to run from anywhere.
 
