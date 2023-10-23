@@ -4,7 +4,11 @@ import time
 import json
 from dotenv import load_dotenv
 from colorama import Fore, Style, init
-import readline
+import platform
+if platform.system() == 'Windows':
+    import pyreadline as readline
+else:
+    import readline
 import argparse
 
 # Initialize colorama
