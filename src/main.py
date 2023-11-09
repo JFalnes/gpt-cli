@@ -5,6 +5,7 @@ import json
 from dotenv import load_dotenv
 from colorama import Fore, Style, init
 import platform
+
 if platform.system() == 'Windows':
     import pyreadline as readline
 else:
@@ -16,7 +17,7 @@ init()
 
 load_dotenv()
 
-openai.api_key = os.getenv("OPENAI_API_KEY")
+openai.api_key = os.getenv('OPENAI_API_KEY')
 
 def load_config():
     dir_path = os.path.dirname(os.path.realpath(__file__))
@@ -26,18 +27,18 @@ def load_config():
 
 
 def chat(model):
-    """
+    '''
     This function initializes a chatbot using the OpenAI API and allows the user to interact with it through the command line.
     
     Args:
-    - model (str): The name of the GPT model to use. Default is "gpt-4".
-    """
+    - model (str): The name of the GPT model to use. Default is 'gpt-4'.
+    '''
     config = load_config()
     messages = config['messages']
     while True:
         try:
             user_message = input(f'{Fore.BLUE}>>> {Fore.RESET}')
-            messages.append({"role": "user", "content": user_message})
+            messages.append({'role': 'user', 'content': user_message})
         except (KeyboardInterrupt, EOFError):
             print(f'\n{Fore.RED}Exiting chat. Goodbye! {Fore.RESET}')
             exit()
@@ -69,15 +70,15 @@ def chat(model):
         
         # Update the messages list with the assistant's response
         full_reply_content = ''.join([m.get('content', '') for m in collected_messages])
-        messages.append({"role": "assistant", "content": full_reply_content})
+        messages.append({'role': 'assistant', 'content': full_reply_content})
 
 
 def parse_args():
-    parser = argparse.ArgumentParser(description="Chat with GPT!")
-    parser.add_argument("--model", default="gpt-4", help="Name of the model to use")
+    parser = argparse.ArgumentParser(description='Chat with GPT!')
+    parser.add_argument('--model', default='gpt-4-1106-preview', help='Name of the model to use')
     return parser.parse_args()
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     args = parse_args()
     chat(args.model)
