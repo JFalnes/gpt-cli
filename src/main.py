@@ -56,7 +56,7 @@ def chat(model):
         collected_chunks = []
         collected_messages = []        
         # Print the assistant's response label
-        print(f'{Fore.GREEN}GPT-{model[-1]}: ', end='', flush=True)
+        print(f'{Fore.GREEN}GPT: ', end='', flush=True)
         
         # Iterate through the stream of events
         for chunk in response_gen:
