@@ -1,12 +1,12 @@
-Set-Location $PSScriptRoot
-# CHANGE THESE TO MATCH YOUR ENVIRONMENT
-$projectPath = Join-Path $env:USERPROFILE "Documents\workspace\gpt-cli"
+# Assume the script is being run from the 'scripts' directory
+# Set the location to the script's parent directory, which is the project root
+Set-Location -Path (Resolve-Path "$PSScriptRoot\..")
 
-# Activating virtual environment
-. (Join-Path $projectPath ".venv\Scripts\Activate.ps1")
+# Activating virtual environment from the project root
+. ".venv\Scripts\Activate.ps1"
 
-# Running the Python script
-python (Join-Path $projectPath "src\main.py")
+# Running the Python script located in the 'src' directory from the project root
+python "src\main.py"
 
 # Deactivating virtual environment
 deactivate
