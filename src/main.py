@@ -1,16 +1,16 @@
 import openai
 import os
-import time
 import json
 from dotenv import load_dotenv
 from colorama import Fore, Style, init
 import platform
+import argparse
 
+# Check OS
 if platform.system() == 'Windows':
     import pyreadline as readline
 else:
     import readline
-import argparse
 
 # Initialize colorama
 init()
@@ -31,8 +31,9 @@ def chat(model):
     This function initializes a chatbot using the OpenAI API and allows the user to interact with it through the command line.
     
     Args:
-    - model (str): The name of the GPT model to use. Default is 'gpt-4'.
+    - model (str): The name of the GPT model to use. Default is 'gpt-4-1106-preview' (GPT-4 Turbo).
     '''
+
     config = load_config()
     messages = config['messages']
     while True:
@@ -42,8 +43,6 @@ def chat(model):
         except (KeyboardInterrupt, EOFError):
             print(f'\n{Fore.RED}Exiting chat. Goodbye! {Fore.RESET}')
             exit()
-        # Record the time before the request is sent
-        start_time = time.time()
 
         # Send a ChatCompletion request with stream=True
         response_gen = openai.ChatCompletion.create(
